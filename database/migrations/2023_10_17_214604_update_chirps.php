@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chirps', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('message');
-            $table->timestamps();
+        //
+        Schema::table('chirps', function (Blueprint $table) {
+            $table->renameColumn('user_id', 'id_user');
         });
     }
 
@@ -24,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('chirps');
+        //
     }
 };
